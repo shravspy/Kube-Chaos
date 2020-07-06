@@ -12,8 +12,6 @@
     - 3.2 Chaos Testing
   - [4.0 Engineering Challenges](README.md#engineering-challenges)
     - 4.1 Deployment of Kubernetes cluster
-    - 4.2 Deployment of Spark on Kubernetes cluster
-    - 4.3 Deployment of Postgres on Kubernetes cluster
   - [6.0 Development](README.md#development)
     - 6.1 Build and Deploy Data Pipeline
 
@@ -192,16 +190,19 @@ To deploy the data pipeline to a Kubernetes cluster, you can run the following s
  terraform apply`
 
  To deploy Prometheus
+ 
 `cd Prometheus-grafana
 terraform init
 terraform apply`
 
 Create S3 bucket
+
 `cd S3_bucket
  terraform init
  terraform apply`
 
 Create Secret.yaml object in EKS Cluster
+
 `kubectl create secret generic scale-secret \
   --from-literal=POSTGRES_DB='lmd' \
   --from-literal=POSTGRES_USER='postgres' \
@@ -211,6 +212,7 @@ Create Secret.yaml object in EKS Cluster
   --from-literal=AWS_DEFAULT_REGION='us-east-2' -n dev`
 
 Update Gremlin gremlin credentials in run_kube file and run
+
 `./run_kube gremlin()`
 
 
