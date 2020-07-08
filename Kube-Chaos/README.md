@@ -12,8 +12,9 @@
     - 3.2 Chaos Testing
   - [4.0 Engineering Challenges](README.md#engineering-challenges)
     - 4.1 Deployment of Kubernetes cluster
-  - [6.0 Development](README.md#development)
-    - 6.1 Build and Deploy Data Pipeline
+    - 4.2 Designing Gremlin attacks 
+  - [5.0 Development](README.md#development)
+    - 5.1 Build and Deploy Data Pipeline
 
 ## 1.0 Introduction
 
@@ -85,7 +86,7 @@ Prometheus was installed in order to monitor Kubernetes Cluster using helm throu
 The below pictures shows steady state behaviour of the app.
 
 <p align="center"> 
-  <img src="./media/Steady_State_Host_Failure.png" alt="Steady_State_Host_Failure.png" width="450px"/>
+  <img src="./media/Steady_State_Host_Failure.png" alt="Steady_State_Host_Failure.png" width="800px"/>
 </p>
 
 
@@ -103,7 +104,7 @@ Result:  The flask service was up while postgres db was down. I could see the we
 Below postgres screenshot shows, network interruption during the attack and pod restarts after the attacks. 
 
 <p align="center"> 
-  <img src="./media/postgres_logs.png" alt="postgres_logs" width="450px"/>
+  <img src="./media/postgres_logs.png" alt="postgres_logs" width="800px"/>
 </p>
 
 
@@ -114,24 +115,25 @@ Blast Radius: Attacked 2 nodes in the EKS cluster.
 Result: Since postgres master db was not on this server, taking down this node had only latency delay for few seconds and loadbalancer effectively routed the traffic to worker service on other node. Prometheus monitoring was affected as Prometheus' main deamon was on this node and the node exporter didn't work without an input from this deamon. Concluding this experiment affected monitoring system on the cluster. After the attack new node was created and joined the load balancer.
 
 <p align="center"> 
-  <img src="./media/memory_usage.png" alt="memory_usage" width="450px"/>
+  <img src="./media/memory_usage.png" alt="memory_usage" width="800px"/>
 </p>
 
 As in the screenshot above memory usage data is not visible on prometheus as prometheus is down on the node and overall disk usage for other nodes increases as traffic is being routed. 
 
 <p align="center"> 
-  <img src="./media/new_instance.png" alt="new_instance" width="450px"/>
+  <img src="./media/new_instance.png" alt="new_instance" width="800px"/>
 </p>
 
 <p align="center"> 
-  <img src="./media/prometheus_down.png" alt="prometheus_down" width="450px"/>
+  <img src="./media/prometheus_down.png" alt="prometheus_down" width="800px"/>
 </p>
 
-To perform successful autoscale on cluster :
-`kubectl autoscale deployment py-pg --cpu-percent=50 --min=1 --max=10 `
 
 
 ### Experiment #2: CPU Usage Auto-Scaling
+
+To perform successful autoscale on cluster :
+`kubectl autoscale deployment py-pg --cpu-percent=100 --min=1 --max=10 `
 
 
 Steady State: Application behaves as expected while hosts come and go.
@@ -191,14 +193,16 @@ To deploy the data pipeline to a Kubernetes cluster, you can run the following s
 
  To deploy Prometheus
  
-`cd Prometheus-grafana
-terraform init
+`cd Prometheus-grafana`
+
+`terraform init
 terraform apply`
 
 Create S3 bucket
 
-`cd S3_bucket
- terraform init
+`cd S3_bucket`
+
+`terraform init
  terraform apply`
 
 Create Secret.yaml object in EKS Cluster
@@ -218,8 +222,9 @@ Update Gremlin gremlin credentials in run_kube file and run
 
 Setup datapipeline 
 
-`cd terraform/postgres
- terraform init
+`cd terraform/postgres`
+
+`terraform init
  terrafrom apply`
 
 `./run_kube setup_scale_app`
