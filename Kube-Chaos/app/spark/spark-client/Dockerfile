@@ -1,4 +1,4 @@
-FROM ajgrande924/spark-base:latest
+FROM shravspy/spark-base:latest
 
 COPY ./python /examples/python
 COPY ./scripts /examples/scripts
