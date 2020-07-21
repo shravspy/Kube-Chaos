@@ -16,7 +16,7 @@ spec:
     spec:                                                                                                                                                                                                                                   
       containers:                                                                                                                                                                                                                           
       - name: spark-client                                                                                                                                                                                                                  
-        image: ajgrande924/spark-client:latest                                                                                                                                                                                         
+        image: shravspy/spark-client:latest                                                                                                                                                                                         
         imagePullPolicy: Always
         env:
           - name: PYSPARK_PYTHON
