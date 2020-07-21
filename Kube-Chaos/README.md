@@ -1,4 +1,4 @@
-# iKube-Chaos
+# Kube-Chaos
 > chaos @ scale
 
 ## Table of Contents
