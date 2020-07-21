@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: scale-app
-        image: ajgrande924/scale-app:latest
+        image: shravspy/scale-app:latest
         ports:
         - containerPort: 80
         env: 
