@@ -7,7 +7,7 @@ services:
       - "dbdata:/var/lib/postgresql/data"
   flask:
     build: .
-    image: ajgrande924/scale-app
+    image: shravspy/scale-app
     container_name: scale
     ports: 
       - 80:80
