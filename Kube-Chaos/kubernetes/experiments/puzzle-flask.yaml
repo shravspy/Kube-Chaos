@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: flask
-        image: ajgrande924/puzzle-flask:latest
+        image: shravspy/puzzle-flask:latest
         ports:
         - containerPort: 8080
         env:
