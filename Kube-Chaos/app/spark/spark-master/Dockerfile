@@ -1,6 +1,4 @@
-FROM ajgrande924/spark-base:latest
-
-MAINTAINER AJ Grande <ajgrande924@gmail.com>
+FROM shravspy/spark-base:latest
 
 COPY spark-master.sh /
 
