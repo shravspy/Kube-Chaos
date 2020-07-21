@@ -26,7 +26,7 @@ spec:
     spec:                                                                                                                                                                                                                                   
       containers:                                                                                                                                                                                                                           
       - name: py-pg                                                                                                                                                                                                                  
-        image: ajgrande924/py-pg:latest                                                                                                                                                                                         
+        image: shravspy/py-pg:latest                                                                                                                                                                                         
         imagePullPolicy: Always
         resources:
           limits:
