@@ -49,15 +49,15 @@ The existing batch data pipeline is called Scale. It is a music recommendation e
 
 ## 3.0 DevOps Pipeline
 
-The existing DevOps pipeline is [here](https://github.com/ajgrande924/insight-project).The Flask, Postgres, and Spark components of the data pipeline have all been containerized. You can find the containers used for my deployment on [Docker Hub](https://cloud.docker.com/u/ajgrande924/repository/list) 
+The Flask, Postgres, and Spark components of the data pipeline have all been containerized.
 
 | Container | Description |
 | :---: | :---- |
-| `ajgrande924/scale-app` | scale flask application |
-| `ajgrande924/spark-base` | custom spark base image |
-| `ajgrande924/spark-master` | spark master built from spark base |
-| `ajgrande924/spark-worker` | spark worker built from spark base |
-| `ajgrande924/spark-client` | spark client built from spark base |
+| `shravspy/scale-app` | scale flask application |
+| `shravspy/spark-base` | custom spark base image |
+| `shravspy/spark-master` | spark master built from spark base |
+| `shravspy/spark-worker` | spark worker built from spark base |
+| `shravspy/spark-client` | spark client built from spark base |
 
 ## 4.0 Deployment Architecture and Flow
 
@@ -159,7 +159,7 @@ Results : The web service was still running. All the 3 nodes were fully utilized
   
 I initially tried to deploy EKS cluster on AWS using `eksctl` but using this command gave multiple security setup issues on AWS and there isnt not much instructions on how to solve it and what are required set of permissions to be able to deploy kubernetes cluster on AWs using `eksctl`. So I deployed EKS cluster using terraform it was easy to specify EC2 instances needed and could also be destroyed easily while in testing phase.
 
-### 4.2 Designing Gremlin Attacks
+### 4.2 Debugging Postgres in Kubernetes 
 
 
 
