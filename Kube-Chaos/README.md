@@ -12,7 +12,7 @@
     - 3.2 Chaos Testing
   - [4.0 Engineering Challenges](README.md#engineering-challenges)
     - 4.1 Deployment of Kubernetes cluster
-    - 4.2 Designing Gremlin attacks 
+    - 4.2 Debugging postgres in Kubernetes 
   - [5.0 Development](README.md#development)
     - 5.1 Build and Deploy Data Pipeline
 
